@@ -31,13 +31,17 @@ def main():
             if event.type == pygame.QUIT:
                 return
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_SPACE] and player.timer <= 0:
             player.shoot(shots)
         screen.fill((0,0,0))
         for thing in drawable:    
             thing.draw(screen)
         updatable.update(dt)
         for asteroid in asteroids:
+            for shot in shots:
+                if shot.collisionCheck(asteroid) == True:
+                    shot.kill()
+                    asteroid.split()
             if asteroid.collisionCheck(player) == True:
                 print("Game over!")
                 sys.exit()
