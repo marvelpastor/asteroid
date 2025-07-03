@@ -1,2 +1,20 @@
-venv/
+
+# Ignore virtual environment created by uv
+.venv/
+
+# Ignore uv's dependency lock file if you don't want to commit it
+# (Optional — include it if you want reproducible builds)
+uv.lock
+
+# Python cache
 __pycache__/
+*.pyc
+
+# Ignore editor-specific or system-specific files
+.DS_Store
+*.swp
+*.swo
+
+# If you're using JetBrains, VSCode, etc.
+.idea/
+.vscode/
